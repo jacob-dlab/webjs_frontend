@@ -78,13 +78,12 @@
   </div>
   <script>
     document.getElementById('submitBtn').addEventListener('click', function(){
-      var name = document.getElementById('name').value;
-      var age = parseInt(document.getElementById('age').value);
+      let name = document.getElementById('name').value;
+      let age = parseInt(document.getElementById('age').value);
       
-      // 전송할 데이터 (JSON 형식)
-      var data = { name: name, age: age };
+      // 전송할 데이터(JSON 형식)
+      let data = { name: name, age: age };
       
-      // 서버가 있다고 가정할 URL (실제 서버가 없다면 에러가 발생)
       fetch('https://example.com/api/calculate-age', {
         method: 'POST',
         headers: {
@@ -93,17 +92,16 @@
         body: JSON.stringify(data)
       })
       .then(function(response) {
-        // 서버가 반환하는 JSON 데이터: { name: "홍길동", futureAge: 30 } 형태라고 가정
+        // 서버가 반환하는 JSON 데이터: { name: "Jacob", futureAge: 30 } 형태라고 가정
         return response.json();
       })
       .then(function(resultData) {
-        // 결과 출력
         document.getElementById('result').textContent = resultData.name + '님의 10년 후 나이는 ' + resultData.futureAge + '살입니다.';
       })
       .catch(function(error) {
         console.error('Error:', error);
-        // 서버가 없으므로 임시로 계산하여 결과를 보여줍니다.
-        var futureAge = age + 10;
+        // 임시계산 코드
+        let futureAge = age + 10;
         document.getElementById('result').textContent = name + '님의 10년 후 나이는 ' + futureAge + '살입니다. (임시 계산)';
       });
     });
