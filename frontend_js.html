@@ -125,7 +125,7 @@
           `${resultData.name}님 (${resultData.school})의 10년 후 나이는 ${resultData.futureAge}살입니다.`;
       })
       .catch(error => {
-        console.error('❌ 서버 요청 실패:', error);
+        console.error('서버 요청 실패:', error);
         document.getElementById('result').textContent = 
           '서버 오류로 인해 나이를 계산할 수 없습니다.';
       });
@@ -151,7 +151,7 @@
           }
         })
         .catch(error => {
-          console.error('❌ 전체 목록 조회 실패:', error);
+          console.error('전체 목록 조회 실패:', error);
           document.getElementById('allResults').textContent = '전체 목록 조회 중 오류가 발생했습니다.';
         });
     });
