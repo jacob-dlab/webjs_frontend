@@ -42,16 +42,25 @@
     button {
       width: 100%;
       padding: 0.75rem;
-      background: #28a745;
       border: none;
       border-radius: 4px;
       color: white;
       font-size: 1rem;
       cursor: pointer;
       margin-top: 1rem;
+      transition: background 0.3s ease;
     }
-    button:hover {
-      background: #218838;
+    #submitBtn {
+      background: #2c3e50;
+    }
+    #submitBtn:hover {
+      background: #34495e;
+    }
+    #getAllBtn {
+      background: #f39c12;
+    }
+    #getAllBtn:hover {
+      background: #e67e22;
     }
     .result {
       margin-top: 1rem;
@@ -113,14 +122,12 @@
       .then(response => response.json())
       .then(resultData => {
         document.getElementById('result').textContent = 
-          resultData.name + '님 (' + resultData.school + ')의 10년 후 나이는 ' 
-          + resultData.futureAge + '살입니다.';
+          `${resultData.name}님 (${resultData.school})의 10년 후 나이는 ${resultData.futureAge}살입니다.`;
       })
       .catch(error => {
         console.error('❌ 서버 요청 실패:', error);
-        let futureAge = age + 10;
         document.getElementById('result').textContent = 
-          name + '님 (' + school + ')의 10년 후 나이는 ' + futureAge + '살입니다. (임시 계산)';
+          '서버 오류로 인해 나이를 계산할 수 없습니다.';
       });
     });
 
